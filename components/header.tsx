@@ -1,4 +1,9 @@
+"use client";
+import { useState } from "react";
+
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="flex items-center justify-between px-6 py-3 bg-[#050042] text-white">
       <div className="flex items-center gap-2">
@@ -7,22 +12,38 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-4">
-        <span className="cursor-pointer flex items-center gap-1">
-          JP
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="relative">
+          <span
+            className="cursor-pointer flex items-center gap-1"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </span>
+            JP
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </span>
+          {isOpen && (
+            <div className="absolute top-full mt-1 bg-[#1a1a4a] text-white rounded shadow-lg">
+              <div className="px-4 py-2 hover:bg-[#252560] cursor-pointer">
+                JP
+              </div>
+              <div className="px-4 py-2 hover:bg-[#252560] cursor-pointer">
+                EN
+              </div>
+            </div>
+          )}
+        </div>
+
         <span className="cursor-pointer">サインアップ</span>
         <button className="rounded bg-[#3565C6] px-4 py-1 text-white hover:bg-[#2E56AD]">
           ログイン

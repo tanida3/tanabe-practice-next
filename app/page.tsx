@@ -1,6 +1,17 @@
 import Header from "@/components/header";
-import Image from "next/image";
+import Maincontent from "@/components/main-content";
+import Sidebar from "@/components/sidebar";
 
 export default function Home() {
-  return <Header />;
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      <div className="flex">
+        <Sidebar />
+        <div className="flex-1">
+          <Maincontent />
+        </div>
+      </div>
+    </div>
+  );
 }
